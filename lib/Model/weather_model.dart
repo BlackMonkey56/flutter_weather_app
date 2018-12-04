@@ -6,8 +6,8 @@ class Coord {
 
   factory Coord.fromJson(Map<String, dynamic> json){
     return Coord(
-      lon: double.parse(json['lon']),
-      lat: double.parse(json['lat'])
+      lon: double.parse(json['lon'].toString()),
+      lat: double.parse(json['lat'].toString())
     );
   }
 
@@ -34,7 +34,7 @@ class Weather {
 
 class Main {
   final double temp;
-  final int pressure;
+  final double pressure;
   final int humidity;
   final double temp_min;
   final double temp_max;
@@ -43,11 +43,11 @@ class Main {
 
   factory Main.fromJson(Map<String, dynamic> json){
     return Main(
-        temp: double.parse(json['temp']),
-        pressure: json['pressure'],
+        temp: double.parse(json['temp'].toString()),
+        pressure: double.parse(json['pressure'].toString()),
         humidity: json['humidity'],
-        temp_min: double.parse(json['temp_min']),
-        temp_max: double.parse(json['temp_max'])
+        temp_min: double.parse(json['temp_min'].toString()),
+        temp_max: double.parse(json['temp_max'].toString())
     );
   }
 
@@ -60,7 +60,7 @@ class Wind {
   Wind({this.speed, this.deg});
 
   factory Wind.fromJson(Map<String, dynamic> json){
-    return Wind(speed: double.parse(json['speed']), deg: double.parse(json['deg']));
+    return Wind(speed: double.parse(json['speed'].toString()), deg: double.parse(json['deg'].toString()));
   }
 }
 
@@ -82,7 +82,7 @@ class Sys {
 
   Sys({this.message, this.country, this.sunrise, this.sunset});
 
-  factory Sys.fronJson(Map<String, dynamic> json){
+  factory Sys.fromJson(Map<String, dynamic> json){
     return Sys(message: json['message'], country: json['country'], sunset: json['sunset'], sunrise: json['sunrise']);
   }
 }
@@ -114,7 +114,7 @@ class WeatherModel {
       wind: Wind.fromJson(json['wind']),
       clouds: Clouds.fromJson(json['clouds']),
       dt: json['dt'],
-      sys: Sys.fronJson(json['sys']),
+      sys: Sys.fromJson(json['sys']),
       id: json['id'],
       name: json['name'],
       cod: json['cod']
